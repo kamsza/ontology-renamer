@@ -53,12 +53,14 @@ public class Main {
         List<OWLClass> classes = new ArrayList<>(ontology.getClassesInSignature());
         List<OWLDataProperty> dataProperties = new ArrayList<>(ontology.getDataPropertiesInSignature());
         List<OWLObjectProperty> objectProperties = new ArrayList<>(ontology.getObjectPropertiesInSignature());
+		List<OWLEntity> entities = new ArrayList<>(ontology.getIndividualsInSignature());
 
         List<OWLNamedObject> ontologyObjects = new ArrayList<>();
         ontologyObjects.addAll(classes);
         ontologyObjects.addAll(dataProperties);
         ontologyObjects.addAll(objectProperties);
-
+        ontologyObjects.addAll(entities);
+		
         System.out.println("_____ CHANGES MADE _____");
         for(OWLNamedObject owlObject : ontologyObjects) {
             List<OWLAnnotationAssertionAxiom> annotationList = ontology.annotationAssertionAxioms(owlObject.getIRI()).collect(Collectors.toList());
