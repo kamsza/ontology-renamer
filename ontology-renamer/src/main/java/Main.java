@@ -5,6 +5,7 @@ import org.semanticweb.owlapi.model.OWLAnnotationAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLAnnotationProperty;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataProperty;
+import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLNamedObject;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
@@ -78,6 +79,7 @@ public class Main {
             String label = literalOpt.get().getLiteral();
             int prefixIdx = owlObject.getIRI().toString().lastIndexOf('/');
             String newIRI = owlObject.getIRI().toString().substring(0, prefixIdx) + "/" + label;
+            newIRI = newIRI.replaceAll(" ", "_");
 
             System.out.println("- " + owlObject.getIRI().toString());
             System.out.println("+ " + newIRI + "\n");
